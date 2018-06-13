@@ -1,0 +1,9 @@
+<h3 id="manual">Manual Valve Control</h3>
+<div>Select or deselect the check boxes below to manual turn a zone on or off</div>
+<br>
+
+<form id="manualControls" onsubmit="return false">
+  {% for valve in range(1,channels +1) %}
+  <div><input id="manual{{valve}}" name="manual{{valve}}" type="checkbox" onclick="manualClick()"><label for="manual{{valve}}" id="mvalve{{valve}}">Zone {{valve}}</label></div>
+  {% endfor %}
+</form>

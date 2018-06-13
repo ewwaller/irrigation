@@ -1,0 +1,17 @@
+<h3 id="description">Set Zone Names</h3>
+
+
+<form id="theZones" onsubmit="return false;">
+  
+  <h4>Zone Names</h4>
+  {% for valve in range(1,channels +1) %}
+  <div><input name="valve{{valve}}" id="valve{{valve}}"><label for="valve{{valve}}" id="valve{{valve}}">Zone {{valve}}</label></div>
+  {% endfor %}
+  <br><br>
+</form>
+<div>
+  <button onclick="getZones()">Set Zone Names</button>
+</div>
+
+
+

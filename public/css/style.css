@@ -1,0 +1,165 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, FreeSans, sans;
+}
+
+body {
+
+    color : black;
+    Background-color:#002000;
+    background-image: url("/static/IMAG0197.jpg") ;
+    background-repeat: no-repeat no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+h1 {
+    margin: -7px -7px 3px -7px;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    background: #999;
+    font-size: 1.5em;
+}
+
+h3 {
+    margin: -7px -7px 3px -7px;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    background: #999;
+}
+
+header {
+    float:left;
+    font-size:xx-large;
+    color:white;
+    text-align: left;
+    display:flow-root;
+    background-color:#00000030;
+    width:100%;
+}
+
+
+footer {
+    float:right;
+    color : white;
+    text-align: right;
+    display:flow-root;
+    background-color:#00000030;
+    width:100%;
+}
+
+.rule{
+    width:100%;
+    color : black;
+    border-top : solid;
+    border-width : 1px;
+    text-align: right;
+    display:flow-root;
+    background-color:#ffffff30
+}
+
+.rule2{
+    width:100%;
+    border-top : solid;
+    border-width : 1px;
+    text-align: right;
+    display:flow-root;
+    background-color:#ffffff30;
+    color:white;
+}
+
+.article {
+    top: 0px;
+    width: 40%;
+    float:left;
+    padding-left:5px;
+    padding-right:5px;
+
+}
+.spinner {
+    padding-top:8px;
+    padding-bottom:8px;
+}
+.rightColumn {
+    width:40%;
+    float:left;
+    clear:right;
+    margin-left:2%;
+}
+
+.leftColumn {
+    width: 20%;    float:left;
+    clear: left;
+    margin-right:2%;
+}
+
+.leftColumn ul {
+    padding: 0px;
+    margin-top:5px;
+}
+.leftColumn ul a {
+    text-decoration: none;
+    
+}
+
+.box {
+    border: 2px solid #999;
+    padding: 7px;
+    margin-bottom: 20px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    Background:white;
+}
+
+#theRequest li {
+    margin-left:3px;
+}
+
+#thePost li {
+    margin-left:3px;
+    border:red;
+}
+
+#extant {color: red;}
+
+#list {
+    Background : #f0f0f0;
+    border:solid;
+    width:max-content;
+    width:moz-max-content;
+    font-size:x-large;
+    
+}
+#queuedEvents {
+    Background : #f0f0f0;
+    border:solid;
+    width:90%
+}
+
+#activeEvent {
+    Background : #f0f0f0;
+    border:solid;
+    width:90%;
+    font-size:x-large
+	      
+}
+#wrapper{
+    float:left;
+    position: relative;
+    left: calc( 10% );
+    clear:both;
+    font-size: 0.8em;
+    width:100%;
+}
+
+
+#selectable .ui-selecting { background: #FECA40; }
+#selectable .ui-selected { background: #F39814; color: white; }
+#selectable { list-style-type: none; margin: 0; padding: 0; width: 90%; }
+

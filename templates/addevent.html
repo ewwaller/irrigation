@@ -1,0 +1,33 @@
+<h3 id="description">Add Event to Schedule</h3>
+
+<form id="theEvent" onsubmit="return false;">
+
+  <div>Weekday
+    <select name="day" id="day">
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+      <option value="Sunday">Sunday</option>
+    </select>
+  </div>
+  <br>
+  <div>
+  <span> Start time : </span><span><input id ='eventTime' type='time' style="padding-top: 10px;padding-bottom: 10px;font-size:10;"></span>
+  <br><br>
+  </div>
+  <h4>Durations</h4>
+  {% for valve in range(1,channels +1) %}
+  <div><input type="number" min="0" max="60" step="1" value="0" size="10" name="valve{{valve}}" class="spinner"><label for="valve{{valve}}" id="valve{{valve}}">Zone {{valve}}</label></div>
+  {% endfor %}
+  <br><br>
+</form>
+<div>
+  <button onclick="postNewEvent()">Add Event</button>
+</div>
+
+<a href = "zone">Set Zone Names</a>
+
+

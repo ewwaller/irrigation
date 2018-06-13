@@ -1,0 +1,49 @@
+<h3 id="manual">Yard Light Controls</h3>
+<div>Enable or disable automatic controls.  Select start and stop
+  times, toggle current state of lights</div>
+<br>
+
+<form id="lightingControls" onsubmit="return false">
+  <h4>Yard lights are
+    currently <span id=lightState>unknown</span></h4>
+  <br>
+  <div>
+    <button id="lightsButton" name="lightsButton"
+	    onClick="lightsToggle()">Yard Lights Toggle</button>
+  </div>
+  <br>
+  <div>
+    <input type="checkbox" id="lightingAuto" name="lightingAuto"
+	   onclick="lightsUpdate()"> Automatic Control Enabled</input>
+  </div>
+  <br>
+  <div>
+    <label for="lightOnTime">Light on time</label>
+    <input id='lightOnTime'
+	   onchange="lightsUpdate()"
+	   type='time'
+	   style="padding-top:10px;padding-bottom:
+		  10px;font-size:10;">
+    <input id='lightOnTime2'
+	   onchange="lightsUpdate()"
+	   type='time'
+	   style="padding-top:10px;padding-bottom:
+		  10px;font-size:10;">
+  </div>
+  <div>
+    <label for="lightOffTime">Light off time</label>
+    <input id ='lightOffTime'
+	   type='time'
+	   onchange="lightsUpdate()"
+	   style="padding-top:
+		  10px;padding-bottom:
+		  10px;font-size:10;">
+    <input id ='lightOffTime2'
+	   type='time'
+	   onchange="lightsUpdate()"
+	   style="padding-top:
+		  10px;padding-bottom:
+		  10px;font-size:10;">
+  </div>
+  <h4 id="extant">Warning: Lighting schedule may be extant.  Refresh page</h4>
+</form>

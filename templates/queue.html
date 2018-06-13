@@ -1,0 +1,23 @@
+<h3 id="description">Queued Events</h3>
+<h4> Day and Time</h3>
+<ul id="list">
+  Please Standby...
+  <!--Generated list items will go here-->
+</ul>
+
+Events from the schedule are moved to the queue below at their
+scheduled time.  Items in the queue will run sequentially.
+<p>Any events that are scheduled when the system is stopped will not
+  be enqueued, but rather will be skipped.
+  <p>While the system is stopped, a window permitting manual control
+  of valves will be available
+
+<h4>Active Event</h4>
+<ul id="activeEvent">None</ul>
+<h4>Queued Events</h4>
+<ul id="queuedEvents">None</ul>
+<br><br>
+<div>
+  <button onclick="runStop()" id="runStopButton" style="width:60%;">Stop</button>
+  <button onclick="clearQueue()" id="clearQueueButton" style="width:20%;">Clear Queue</button>
+</div>
