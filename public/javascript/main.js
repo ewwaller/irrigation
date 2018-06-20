@@ -127,8 +127,9 @@ function UpdateTime(){
 			$("#activeEvent").html(eventString)
 		}
 		if (events.length == 0)
-		    events.push("Queue is empty");
-		$("#queuedEvents").html(listCreateHtml(events));
+		    $("#queuedEvents").html("Queue is empty")
+		else
+		    $("#queuedEvents").html(listCreateHtml(events));
 	    }
 	    else{
 		$("#activeEvent").html("There are no active events");
@@ -216,7 +217,7 @@ function listCreateHtml(dataObject) {
     var templateHtml = $("#template-list-item").html();
     
     for (key in dataObject) {
-	listHtml += templateHtml.replace(/{{id}}/g, key)
+	listHtml += templateHtml.replace(/{{id}}/g, Number(key)+1)
             .replace(/{{value}}/g, dataObject[key]);
     }
     return listHtml;

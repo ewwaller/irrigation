@@ -88,9 +88,10 @@ class Root:
     def zone(self):
         """
         Serve the zone page of the website using the Jinja templeting
-        engine. Called from the CherryPy framework.  This is the only
-        web application page besides the index page.  This page
-        provides a form to permit the zone names to be edited
+        engine. Called from the CherryPy framework.  This and about
+        are the  is the only web application pages besides the index
+        page.  This page provides a form to permit the zone names to
+        be edited  
         """
         args = {'title':"%d Channel Irrigation Controller" % self.channels,
                 'simulation':self.theIrrigationEngine.Simulation(),
@@ -109,6 +110,29 @@ class Root:
                     
                 ),
                 'channels':self.channels,
+        }
+        return self.env.get_template('index.html').render(args)
+    
+    @cherrypy.expose
+    def about(self):
+        """
+        Serve the about page of the website using the Jinja templeting
+        engine. Called from the CherryPy framework.  This is and zone
+        are the only web application pages besides the index page.
+        This page provides information only
+        """
+        args = {'title':"%d Channel Irrigation Controller" % self.channels,
+                'simulation':self.theIrrigationEngine.Simulation(),
+                'request':cherrypy.request.headers,
+                'leftcol' : (
+                ),
+                'centercol': (
+                    ('about.html', "id='schedule'"),
+                ),
+                'rightcol': (
+                ),
+                'scripts' : (
+                ),
         }
         return self.env.get_template('index.html').render(args)
     

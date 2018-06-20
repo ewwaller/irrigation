@@ -29,7 +29,7 @@ import simplejson as json
 import log
 import io
 
-dwell = 1
+dwell = 0.1
 MaxChannels=16
 
 daynames = ("Monday","Tuesday","Wednesday","Thursday",
@@ -61,15 +61,16 @@ except:
 
 class IrrigationEngine(threading.Thread):
     """ 
-    This class provides the background process provides the real
+    This class implements the background process that provides the real
     time control of the irrigation valves by comparing scheduled
     events to the current time and moving them to the queue.  This
-    processing will only 
+    processing will only occur while the irrigation web interface is
+    in auto mode.
 
-    When the system is running, the valve for the event at the top
+    When the system is in auto mode, the valve for the event at the top
     of the queue is opened and the remaining time decremented. When
     an event has no time left, it is dequeued and the next event
-    processed.  When the system is not running, it will monitor the
+    processed.  When the system is not in auto mode, it will monitor the
     manual control inputs and will open the valves according to
     those controls.
     """
@@ -246,8 +247,9 @@ class IrrigationEngine(threading.Thread):
                         log.logger.info("Manual valve control change. Out=%d",out)
                     self.oldout = out
                     self.gpio(out | (self.lightsState['state'] << 15))
-                self.oldtime = self.time
-            time.sleep(dwell)
+            self.oldtime = self.time
+            while self.oldtime[5] == time.localtime()[5]:
+                time.sleep(dwell)
         log.logger.debug("Irrigation Engine exiting")
         self.clearGpio()
 

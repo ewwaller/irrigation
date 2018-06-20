@@ -1,0 +1,78 @@
+<h3 id="description">Irrigation Controller</h3>
+<h4>General</h4>
+This program uses the GPIO outputs of a Raspberry Pi to provide
+automation for irrigation and low voltage lighting control.  
+
+If the program is run on a non-Raspberry Pi host, or if the Python
+GPIO libraries on the Raspberry Pi are not installed, the program will
+run in <i>simulator mode</i> in which the user interface will run, and
+the irrigation engine will sequence events, but there are no actual
+GPIO outputs controlled.  This program was designed to work directly
+with relay boards such as the
+<a href=https://www.sainsmart.com/products/8-channel-5v-relay-module>
+  Sainsmart 8-channel relay controller</a>.  This program has been tested
+  on a RaspberryPi-3 running the Raspbian Linux distribution.
+<br><br>
+The program is written in Python3 on the server side.  The
+server side is implemented using the 
+<a href==https://cherrypy.org/>cherrypy web framework</a> to provide a user
+interface that can be accessed by a browser.  The pages are rendered
+using the <a href=http://jinja.pocoo.org/docs/2.10/>jinja2 templating
+engine</a>.
+<br><br>
+Javascript is used on the client side to provide dynamic web pages and
+is supported by the <a href=https://jquery.com/>jquery</a> and
+<a href=https://jqueryui.com/>jquery UI</a> libraries.
+<br><br>
+<h4>Web Interface</h4>
+By default, the web interface is on port 8080 of <i>localhost</i>.
+Use the -H switch (see <i>Usage</i>) if it is desired to access the
+controller via Ethernet from another client machine. Use the -P
+command line switch to use a different port number.<br><br>
+<h4>Usage</h4>
+To start the program from the command line, see the following usage.
+<br><br>
+<pre>
+usage: main.py [-h] [-v] [-d] [-q] [-l LOGFILE] [-c CONFIGFILE] [-e ERRFILE] [-H HOST]
+
+Web Server for prototype single page application
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --verbose         Generate information
+  -d, --debug           Generate debugging information
+  -q, --quiet           Supress logs to screen
+  -l LOGFILE, --logfile LOGFILE
+                        Access Log File Name
+  -c CONFIGFILE, --configfile CONFIGFILE
+                        Configuration File Name
+  -e ERRFILE, --errfile ERRFILE
+                        Error Log File Name
+  -H HOST, --host HOST  Host base URL
+</pre>
+<br><br>
+<h4>License</h4>
+This program is licensed under the MIT license.
+<br><br>
+<pre>
+Copyright (c) 2018 Eric Waller
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</pre>
+<br><br><a href=index>Home</a>
