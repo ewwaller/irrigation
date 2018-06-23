@@ -99,7 +99,7 @@ class Root:
                 'leftcol' : (
                 ),
                 'centercol': (
-                    ('zone.html', "id='schedule'"),
+                    ('zone.html', "id='zone'"),
                 ),
                 'rightcol': (
                 ),
@@ -133,6 +133,32 @@ class Root:
                 ),
                 'scripts' : (
                 ),
+        }
+        return self.env.get_template('index.html').render(args)
+    
+    @cherrypy.expose
+    def log(self):
+        """
+        Serve the about page of the website using the Jinja templeting
+        engine. Called from the CherryPy framework.  This is and zone
+        are the only web application pages besides the index page.
+        This page provides information only
+        """
+        with open ("asRun.log","r") as theFile:
+            data=theFile.read()
+        args = {'title':"%d Channel Irrigation Controller" % self.channels,
+                'simulation':self.theIrrigationEngine.Simulation(),
+                'request':cherrypy.request.headers,
+                'leftcol' : (
+                ),
+                'centercol': (
+                    ('log.html', "id='asrunlog'"),
+                ),
+                'rightcol': (
+                ),
+                'scripts' : (
+                ),
+                'logdata': data
         }
         return self.env.get_template('index.html').render(args)
     

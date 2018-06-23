@@ -114,6 +114,10 @@ def main():
                      "Host base URL", None,
                      lambda x: cherrypy.config.update({'server.socket_host': x})
                     ),
+                    (('-P','--port'), 'port', 'store', int,8080,
+                     "Host port", None,
+                     lambda x: cherrypy.config.update({'server.socket_port': x})
+                    ),
                 ),
     )
     thePlugIn=IrrigationPlugin(cherrypy.engine,IrrigationEngine,theConfigFile)

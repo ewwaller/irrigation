@@ -117,6 +117,12 @@ footer {
     Background:white;
 }
 
+#log {
+    border:1px solid;
+    Background:#f0f0f0;
+    height: 70vh;
+    overflow: auto;
+}
 #theRequest li {
     margin-left:3px;
 }
