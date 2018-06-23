@@ -83,7 +83,7 @@ class IrrigationEngine(threading.Thread):
         during each pass 
         """
         log.logger.debug("Initalizing Irrigation Engine")
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self,name="IrrigationEngine")
         self.runFlag = True
         self.oldtime=time.localtime()
         self.theFile=theFile
