@@ -1,0 +1,35 @@
+General
+This program uses the GPIO outputs of a Raspberry Pi to provide automation for irrigation and low voltage lighting control. If the program is run on a non-Raspberry Pi host, or if the Python GPIO libraries on the Raspberry Pi are not installed, the program will run in simulator mode in which the user interface will run, and the irrigation engine will sequence events, but there are no actual GPIO outputs controlled. This program was designed to work directly with relay boards such as the Sainsmart 8-channel relay controller. This program has been tested on a RaspberryPi-3 running the Raspbian Linux distribution.
+
+The program is written in Python3 on the server side. The server side is implemented using the cherrypy web framework to provide a user interface that can be accessed by a browser. The pages are rendered using the jinja2 templating engine.
+
+Javascript is used on the client side to provide dynamic web pages and is supported by the jquery and jquery UI libraries.
+
+Web Interface
+By default, the web interface is on port 8080 of localhost. Use the -H switch (see Usage) if it is desired to access the controller via Ethernet from another client machine. Use the -P command line switch to use a different port number.
+
+Usage
+To start the program from the command line, see the following usage.
+
+usage: main.py [-h] [-v] [-d] [-q] [-l LOGFILE] [-c CONFIGFILE] [-e ERRFILE] [-H HOST]
+
+Web Server for prototype single page application
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --verbose         Generate information
+  -d, --debug           Generate debugging information
+  -q, --quiet           Supress logs to screen
+  -l LOGFILE, --logfile LOGFILE
+                        Access Log File Name
+  -c CONFIGFILE, --configfile CONFIGFILE
+                        Configuration File Name
+  -e ERRFILE, --errfile ERRFILE
+                        Error Log File Name
+  -H HOST, --host HOST  Host base URL
+
+
+Example
+
+authbind main.py -qd -H raspi3.lan -P 80
+Will start the irrigation program listening on port 80 of the interface that is associated with raspi3.lan. And will suppress showing web interface access status to the console, but will show debugging level information on the console.
