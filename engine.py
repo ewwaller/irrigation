@@ -101,6 +101,7 @@ class IrrigationEngine(threading.Thread):
             }
         self.lastValve = -1
         self.clearGpio()
+        self.astronomicalDataFile="sunPhase.json"
 
     def stop(self):
         """ 
@@ -170,13 +171,24 @@ class IrrigationEngine(threading.Thread):
                 if (self.oldtime[4] != self.time[4])\
                        and 'lights' in self.db \
                        and self.db['lights']['lightingAuto']:
+                    #First, check whether there are sun_phase data
+                    #available
+                    self.CheckSunPhase()
                     newState=None
-                    if self.db['lights']['lightOnTime'] ==  "%02d:%02d"%(self.time[3],self.time[4]) or \
-                       self.db['lights']['lightOnTime2'] == "%02d:%02d"%(self.time[3],self.time[4]):
+                    now="%02d:%02d"%(self.time[3],self.time[4])
+                    if self.db['lights']['lightOnTime'] ==  now or \
+                       self.db['lights']['lightOnTime2'] == now:
                            newState=True
-                    if self.db['lights']['lightOffTime'] ==  "%02d:%02d"%(self.time[3],self.time[4]) or \
-                       self.db['lights']['lightOffTime2'] == "%02d:%02d"%(self.time[3],self.time[4]):
+                    if self.db['lights']['lightOffTime'] ==  now or \
+                       self.db['lights']['lightOffTime2'] == now:
                            newState=False
+                    if self.db['lights']['useAstronomical']:
+                        if ('Sunrise' in self.db['lights'])\
+                           and ('Sunset') in self.db['lights'] :
+                            if self.db['lights']['Sunrise'] == now:
+                                newState=False
+                            if self.db['lights']['Sunset'] == now:
+                                newState=True
                     if newState is not None:
                         log.logger.info("Yard lights turned %s by timer"%("On" if newState else "Off", ))
                         self.lightsState['state']=newState
@@ -253,6 +265,16 @@ class IrrigationEngine(threading.Thread):
         log.logger.debug("Irrigation Engine exiting")
         self.clearGpio()
 
+    def CheckSunPhase(self):
+        try:
+            with open(self.astronomicalDataFile) as data_file:
+                db = json.load(data_file)
+                for i in ['Sunrise','Sunset']:
+                    if (not i in self.db['lights']) or ( not self.db["lights"][i] == db[i]):
+                        self.db["lights"][i]=db[i]
+                        log.logger.info("%s changed to %s",i,self.db["lights"][i])
+        except:
+            log.logger.warn("Unable to read astronomical data from %s",self.astronomicalDataFile)
 
     def getSchedule(self):
         """ 

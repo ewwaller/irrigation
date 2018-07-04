@@ -18,7 +18,7 @@
   </div>
   <br>
   <div>
-    <label for="lightOnTime">Light on time</label>
+    <label for="lightOnTime">Light on times:  </label>
     <input id='lightOnTime'
 	   onchange="lightsUpdate()"
 	   type='time'
@@ -31,7 +31,7 @@
 		  10px;font-size:10;">
   </div>
   <div>
-    <label for="lightOffTime">Light off time</label>
+    <label for="lightOffTime">Light off times:  </label>
     <input id ='lightOffTime'
 	   type='time'
 	   onchange="lightsUpdate()"
@@ -45,5 +45,15 @@
 		  10px;padding-bottom:
 		  10px;font-size:10;">
   </div>
+  <br><br>
+  <h4>Astronomical Data</h4>
+  <div id="astronomical">Sunrise and Sunset are unknown</div>
+  <br><div>
+    <input type="checkbox" id="useAstronomical" name="useAstronomical"
+	   onclick="lightsUpdate()"> Turn lights on and off at sunset
+	   and sunrise</input>
+  </div>
+
+
   <h4 id="extant">Warning: Lighting schedule may be extant.  Refresh page</h4>
 </form>

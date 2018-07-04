@@ -87,6 +87,17 @@ function UpdateTime(){
 		$("#lightState").html("Off")
 		$("#lightsButton").html("Turn Lights On")
 	    }
+
+	    if (("Sunrise" in theResponse.lights) &&
+		("Sunset" in theResponse.lights)){
+		$("#astronomical").html( "Sunrise is at " +
+					theResponse.lights.Sunrise +
+					". Sunset is at " +
+					theResponse.lights.Sunset);
+	    }
+	    else $("astronomical").html("Sunrise and Sunset are unknown");
+	    $("#useAstronomical").prop('disabled', ! $("#lightingAuto").prop("checked"));
+
 	    if (theResponse.lightsState.changeCount>oldCount  && theResponse.lights){
 		oldCount = theResponse.lightsState.changeCount;
 		$("#lightingAuto").prop('checked',theResponse.lights.lightingAuto);
