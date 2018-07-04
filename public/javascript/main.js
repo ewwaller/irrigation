@@ -101,6 +101,7 @@ function UpdateTime(){
 	    if (theResponse.lightsState.changeCount>oldCount  && theResponse.lights){
 		oldCount = theResponse.lightsState.changeCount;
 		$("#lightingAuto").prop('checked',theResponse.lights.lightingAuto);
+		$("#useAstronomical").prop('checked',theResponse.lights.useAstronomical);
 		$("#lightOnTime").val(theResponse.lights.lightOnTime);
 		$("#lightOffTime").val(theResponse.lights.lightOffTime);
 		$("#lightOnTime2").val(theResponse.lights.lightOnTime2);
